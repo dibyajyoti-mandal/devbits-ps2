@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import Course from "./course.model";
 
 const userSchema = new Schema({
     fullName: {
@@ -21,24 +22,21 @@ const userSchema = new Schema({
         minLength: [8, 'Password must be 8 charchter'],
         select: false
     },
-    avatar: {
-        public_id: {
-            type: 'String',
-        },
-        secure_url: {
-            type: 'String'
-        }
-    },
     role: {
         type: 'String',
-        enum: ['USER', 'ADMIN'],
-        default: 'USER'
+        enum: ['Student', 'Teacher'],
+        default: 'Student'
     },
+    courses:[
+        {
+            type: Schema.Types.ObjectId,
+            ref : Course,
+
+        }
+    ],
     forgotPasswordToken: String,
     forgotPasswordExpiry: Date
 }, {
     timestamps: true
 });
-const User =model('User', userSchema);
-
-export default User;
+export const User = model('User', userSchema);

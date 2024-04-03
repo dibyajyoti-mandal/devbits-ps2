@@ -45,15 +45,13 @@ const courseSchema = new Schema({
             }
         }
     ],
-    createdBy:{
-        type:String,
-        required:true,
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: "User",
     }
 
 },{
     timestamps:true
 })
 
-const Course = model('Course', courseSchema);
-
-export default Course;
+export const Course = model('Course', courseSchema);
