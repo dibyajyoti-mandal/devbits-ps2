@@ -32,7 +32,11 @@ const courseSchema = new Schema({
     lectures:[
         {
             title:String,
-            description:String,
+            description:{
+                type: String,
+                maxLength:400,
+                minLength:5,
+            },
             lecture:{
                 public_id:{
                     type:String,
