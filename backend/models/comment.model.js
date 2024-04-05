@@ -1,11 +1,11 @@
-import {mongoose, Schema} from "mongoose"
+import {model, mongoose, Schema} from "mongoose"
 
-const commentSchema=new mongoose.Schema({
+const commentSchema=new Schema({
     userId:{
         Type: String,
         required: true
     },
-    lectureId:{
+    courseId:{
         Type: String,
         required: true
     },
@@ -19,4 +19,4 @@ const commentSchema=new mongoose.Schema({
     }
 })
 
-export default mongoose.model("Comment", commentSchema); 
+export const Model = model("Comment", commentSchema); 

@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import connectDB from "./util/dbconnection.js"
 import userRoutes from "./routes/user.routes.js"
 import authRoutes from "./routes/auth.routes.js"
+import courseRoutes from './routes/course.routes.js'
 
 const app=express()
 dotenv.config()
@@ -12,6 +13,7 @@ const port = process.env.PORT||3000;
 await connectDB()
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/course", courseRoutes);
 
 
 app.use((err, req, res, next) => {
