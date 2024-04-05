@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import Course from "./course.model";
+import {Course} from "./course.model.js";
 
 const userSchema = new Schema({
     fullName: {

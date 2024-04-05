@@ -1,4 +1,5 @@
 import {model , Schema} from "mongoose";
+import { User } from "./user.model.js";
 
 const courseSchema = new Schema({
     title:{
