@@ -31,11 +31,8 @@ const userSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref : Course,
-
         }
     ],
-    forgotPasswordToken: String,
-    forgotPasswordExpiry: Date
 }, {
     timestamps: true
 });

@@ -1,42 +1,41 @@
-import { model, Schema } from "mongoose";
-import  User  from "./user.model.js";
+import {mongoose,Schema} from "mongoose";
 
-const courseSchema = new Schema({
-    title: {
+const lectureSchema = new mongoose.Schema(
+  {
+    title:{
         type: String,
         required: [true, "Title is required"],
         minLength: [8, "Title must be atleast 8 characters"],
         maxLength: [60, "Title should be less than 60 characters"],
         trim: true
     },
-    description: {
+    desc:{
         type: String,
         required: [true, "Description is required"],
         minLength: [8, "Description must be atleast 8 characters"],
         maxLength: [200, "Description should be less than 200 characters"],
         trim: true
     },
-    category: {
-        type: String,
-        required: [true, "Category is required"],
-    },
     thumbnail:{
         type:String,
         required: true,
     },
-    lectures: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Lecture"
-        }
-    ],
-    owner: {
+    videoUrl:{
+        type:String,
+        required: true,
+    },
+    owner:{
         type: Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
+    comments:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ]
+  },
+  { timestamps: true }
+);
 
-}, {
-    timestamps: true
-})
-
-export const Course = model('Course', courseSchema);
+export default mongoose.model("Lecture", lectureSchema);
