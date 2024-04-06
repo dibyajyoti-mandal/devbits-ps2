@@ -1,5 +1,4 @@
 import { model, Schema } from "mongoose";
-import  {User}  from "./user.model.js";
 
 const courseSchema = new Schema({
     title: {
@@ -33,6 +32,16 @@ const courseSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
+    },
+    comments:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ],
+    likes:{
+        type: Number,
+        default:0,
     }
 
 }, {

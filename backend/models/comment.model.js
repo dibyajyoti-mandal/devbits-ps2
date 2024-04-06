@@ -2,19 +2,19 @@ import {model, mongoose, Schema} from "mongoose"
 
 const commentSchema=new Schema({
     userId:{
-        Type: String,
+        type: String,
         required: true
     },
     courseId:{
-        Type: String,
+        type: String,
         required: true
     },
     content:{
-        Type: String,
+        type: String,
         required: true
     },
     likes:{
-        Type: Number,
+        type: Number,
         default: 0,
     }
 })

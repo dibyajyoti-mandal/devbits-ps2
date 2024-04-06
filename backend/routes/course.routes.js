@@ -1,9 +1,9 @@
 import express from "express";
-import {test} from "../controllers/course.js"
+import {} from "../controllers/course.js"
 
 const router = express.Router()
 
-router.get("/r", test)
+router.get("/r", )
 
 
 export default router 

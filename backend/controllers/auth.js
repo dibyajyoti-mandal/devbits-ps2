@@ -25,7 +25,7 @@ export const loginUser = async (req, res, next) => {
         const isCorrect = await bcrypt.compare(req.body.password, user.password);
     
         if (!isCorrect) return next(createError(400, "Wrong Credentials!"));
-      res.status(201).send("in")
+      res.status(201).send("logged in")
     } catch (err) {
       next(err);
     }
