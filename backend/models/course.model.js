@@ -21,6 +21,7 @@ const courseSchema = new Schema({
     },
     thumbnail:{
         type:String,
+        default: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5DqpWgLsxYY7qiDByGV5RY/06a51ac46937084bca466f746bddfaee/project-management-cover.jpg?auto=format%2Ccompress&dpr=1",
         required: true,
     },
     lectures: [
