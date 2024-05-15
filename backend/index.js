@@ -6,6 +6,7 @@ import userRoutes from "./routes/user.routes.js"
 import authRoutes from "./routes/auth.routes.js"
 import courseRoutes from './routes/course.routes.js'
 import commentRoutes from "./routes/comments.routes.js"
+import lectureRoutes from "./routes/lecture.routes.js"
 
 const app=express()
 dotenv.config()
@@ -15,6 +16,7 @@ await connectDB()
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/course", courseRoutes);
+app.use("/api/lecture", lectureRoutes);
 app.use("/api/comment", commentRoutes);
 
 

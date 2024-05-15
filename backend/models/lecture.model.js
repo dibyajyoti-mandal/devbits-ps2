@@ -1,19 +1,10 @@
-import {mongoose,Schema} from "mongoose";
+import {Schema, model} from "mongoose";
 
-const lectureSchema = new mongoose.Schema(
+const lectureSchema = new Schema(
   {
     title:{
         type: String,
         required: [true, "Title is required"],
-        minLength: [8, "Title must be atleast 8 characters"],
-        maxLength: [60, "Title should be less than 60 characters"],
-        trim: true
-    },
-    desc:{
-        type: String,
-        required: [true, "Description is required"],
-        minLength: [8, "Description must be atleast 8 characters"],
-        maxLength: [200, "Description should be less than 200 characters"],
         trim: true
     },
     thumbnail:{
@@ -25,9 +16,13 @@ const lectureSchema = new mongoose.Schema(
         required: true,
     },
     owner:{
-        type: Schema.Types.ObjectId,
-        ref: "User",
+        type: String,
+        required: true,
     },
+    courseId:{
+        type: String,
+        required: true,
+    }
   },
   { timestamps: true }
 );

@@ -1,10 +1,11 @@
 import express from "express";
-import {test} from "../controllers/lecture.js"
+import { addLecture, getLectures } from "../controllers/lecture.js";
+import { verifyToken } from "../util/verifyToken.js";
 
 const router = express.Router()
 
-router.get("/r", test)
-
+router.post("/",verifyToken, addLecture)
+router.get("/:courseId", getLectures)
 
 
 export default router 

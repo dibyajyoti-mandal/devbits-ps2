@@ -29,4 +29,18 @@ export const getCourse = async (req, res, next) => {
 };
 
 
+export const deleteCourse = async (req,res,next)=>{
+    try{
+        const course = await Course.findById(req.params.id);
+        if(!course) return next(createError(404, "course not found"));
+        if(req.user.id===course.owner){
+            await Course.findByIdAndDelete(req.params.id);
+            res.status(200).json("Deleted")
+        }else{
+            return next(createError(403, "Unable to delete"))
+        }
+    }catch(err){
+        next(err);
+    }
+}
 
