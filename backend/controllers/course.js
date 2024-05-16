@@ -13,11 +13,6 @@ export const addCourse = async (req, res, next) => {
     }
 }
 
-// export const addLecture = async (req, res, next) => {
-//     const course = await Course.findById(req.params.id)
-
-// }
-
 
 export const getCourse = async (req, res, next) => {
     try {
