@@ -17,10 +17,14 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75;
+    @apply py-5 md:px-8 px-5 bg-gray-800 text-white font-semibold rounded-full shadow-lg hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75;
   }
 
   .home-card{
-    @apply bg-white p-5 rounded-lg md:m-6 m-1 w-[250px] text-center flex justify-center
+    @apply bg-white p-3 md:p-6 rounded-lg md:m-6 m-1 w-[250px] text-center flex justify-center shadow-md
+  }
+
+  .nav-buttons{
+    @apply block mt-4 lg:inline-block lg:mt-0 text-white hover:text-violet-400 mr-8
   }
 }

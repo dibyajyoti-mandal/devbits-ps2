@@ -8,9 +8,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 fixed top-0 w-full">
+    <nav className="bg-gray-900 p-4 fixed top-0 w-full">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="font-bold text-2xl text-red-300">LearnIt</div>
+        <div className="font-bold  text-violet-500"><span className='text-3xl'>LearnIt.</span><span className='text-1xl'>com</span></div>
         <div className="block lg:hidden">
           <button
             onClick={toggleMenu}
@@ -33,17 +33,17 @@ const Navbar = () => {
           </button>
         </div>
         <div className={`lg:flex items-center ${isOpen ? 'block' : 'hidden'}`}>
-          <a href="#home" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-8">
+          <a href="#" className="nav-buttons">
             Home
           </a>
-          <a href="#courses" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-8">
+          <a href="#courses" className="nav-buttons">
             Courses
           </a>
-          <a href="#create" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-8">
+          <a href="#create" className="nav-buttons">
             Publish
           </a>
           
-          <a href="#profile" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-10">
+          <a href="#profile" className="nav-buttons">
             My Profile
           </a>
         </div>
