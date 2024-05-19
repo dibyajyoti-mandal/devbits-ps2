@@ -21,10 +21,14 @@ code {
   }
 
   .home-card{
-    @apply bg-white p-3 md:p-6 rounded-lg md:m-6 m-1 w-[250px] text-center flex justify-center shadow-md
+    @apply bg-gray-300 p-3 md:p-6 rounded-lg md:m-6 m-1 w-[250px] text-center flex justify-center shadow-md shadow-violet-300
   }
 
   .nav-buttons{
-    @apply block mt-4 lg:inline-block lg:mt-0 text-white hover:text-violet-400 mr-8
+    @apply block mt-4 lg:inline-block lg:mt-0 text-white hover:text-violet-700 mr-6
+  }
+
+  .headings{
+    @apply md:text-3xl text-2xl font-semibold text-violet-700
   }
 }

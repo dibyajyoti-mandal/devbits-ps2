@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <div className="p-[50px] text-left bg-green">
-            <div className='font-bold  md:my-10'><span className='text-4xl'>Welcome to LearnIt</span><span className='text-2xl text-violet-700 '>.com</span></div>
+                <div className='font-bold  md:my-10'><span className='text-4xl'>Welcome to LearnIt</span><span className='text-2xl text-violet-700 '>.com</span></div>
                 <div className='font-bold text-2xl mb-4'>All the skills you need, in one place</div>
                 <div className='md:text-[20px]'>
                     Everything from modern tech to business, with courses for free, it's the right time for the right skills and you. Your learning made easy!
