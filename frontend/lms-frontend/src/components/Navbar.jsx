@@ -36,8 +36,10 @@ const Navbar = () => {
         </div>
         <div className={`lg:flex items-center ${isOpen ? 'block' : 'hidden'}`}>
           <div className='flex text-white'>
-            <FaSearch className='m-2'/>
-            <input placeholder="Search" className='p-1 mr-4 rounded-lg bg-gray-600'></input>
+            
+            <input placeholder="Search" className='p-1 rounded-lg bg-gray-600'></input>
+            <button><FaSearch className='m-2 mr-4 nav-buttons'/></button>
+            
           </div>
           <a href="/" className="nav-buttons">
             Home

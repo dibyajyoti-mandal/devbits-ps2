@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import Card from '../components/Card'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:wrap
+`
 
 const Courses = () => {
     return (
@@ -9,28 +14,24 @@ const Courses = () => {
         <div className="md:m-[100px] mx-[30px]">
 
         
-            <div className='headings'>Courses</div>
+            <div className='headings mb-8'>Get your Courses here...</div>
             <Wrapper>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
 
                 
 
