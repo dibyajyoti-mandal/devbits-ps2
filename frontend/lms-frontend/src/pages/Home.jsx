@@ -20,9 +20,11 @@ const Home = () => {
                     <div className="home-card"><SiStudyverse className='mt-1 mr-4' />5000+ courses</div>
                 </div>
                 <div className='justify-center flex gap-8 mt-[50px]'>
-                    <button class="btn-primary">
-                        Explore Courses
-                    </button>
+                    <a href='/courses'>
+                        <button class="btn-primary">
+                            Explore Courses
+                        </button>
+                    </a>
                     <button class="btn-primary">
                         Create Course
                     </button>

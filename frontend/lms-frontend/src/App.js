@@ -7,6 +7,7 @@ import Courses from './pages/Courses';
 import Course from './pages/Course';
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {Route, Link, Routes} from 'react-router-dom';
+import Lecture from './pages/Lecture';
 
 const Container = styled.div`
   background-color:#ffffff;
@@ -29,6 +30,8 @@ function App() {
                   <Route path=":id" element={<Course/>}/>
                 </Route>
               </Route>
+              <Route path="/course" element={<Course/>}/>
+              <Route path="/lecture" element={<Lecture/>}/>
 
             </Routes>
           {/* routing end */}
