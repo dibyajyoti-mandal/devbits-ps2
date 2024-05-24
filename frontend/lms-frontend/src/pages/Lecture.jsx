@@ -6,7 +6,6 @@ const Container = styled.div`
     gap:24px;
     
 `
-
 const Content = styled.div`
     flex:5;
 `
@@ -24,13 +23,12 @@ const Lecture = () => {
                     allow='accelerometer, autoplay, gyroscope, picture-in-picture'             
                     allowFullScreen       
                 >
-
                 </iframe>
             </Content>
             <div className="text-md md:text-1xl font-semibold justify-between">
                 <div>
                     <Link to="/course">
-                        <Content className='shadow-md p-4'> Supervised Machine Learning with Andrew</Content>
+                        <Content className='shadow-md p-4'><span className='text-gray-500 mr-2'>Go to Course:</span>  Supervised Machine Learning with Andrew</Content>
                     </Link>
                 </div>
                 <Content className='text-violet-600 p-3'>23 May 2023</Content>

@@ -8,6 +8,9 @@ import Course from './pages/Course';
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {Route, Link, Routes} from 'react-router-dom';
 import Lecture from './pages/Lecture';
+import LoginPage from './pages/LoginPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
+import CreateCourse from './pages/CreateCourse.jsx';
 
 const Container = styled.div`
   background-color:#ffffff;
@@ -32,6 +35,9 @@ function App() {
               </Route>
               <Route path="/course" element={<Course/>}/>
               <Route path="/lecture" element={<Lecture/>}/>
+              <Route path="/login" element={<LoginPage/>}/>
+              <Route path="/signup" element={<SignupPage/>}/>
+              <Route path="/create" element={<CreateCourse/>}/>
 
             </Routes>
           {/* routing end */}

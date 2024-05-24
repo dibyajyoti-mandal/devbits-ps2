@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
     display:flex;
@@ -11,31 +11,33 @@ const Wrapper = styled.div`
 
 const Courses = () => {
     return (
-        <>  
-        
-        <div className="md:m-[100px] mx-[30px]">
+        <>
 
-            <div className='flex p-4 justify-between'>
-            <div className='headings mt-1'>Get your Courses here...</div>
-            <button class="btn-primary mt-1">
+            <div className="md:m-[100px] mx-[30px]">
+
+                <div className='flex p-4 justify-between'>
+                    <div className='headings mt-1'>Get your Courses here...</div>
+                    <Link to="/create">
+                    <button class="btn-primary mt-1">
                         Create Course
                     </button>
-            </div>
-            <Wrapper>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+                    </Link>
+                </div>
+                <Wrapper>
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
 
-                
 
-            </Wrapper>
+
+                </Wrapper>
 
             </div>
         </>
