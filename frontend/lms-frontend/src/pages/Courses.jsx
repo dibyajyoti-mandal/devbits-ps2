@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
 import { Link } from 'react-router-dom'
-
+import { useState } from 'react'
+import axios from "axios"
 const Wrapper = styled.div`
     display:flex;
     justify-content: space-between;
@@ -10,6 +11,18 @@ const Wrapper = styled.div`
 `
 
 const Courses = () => {
+    const [courses, setCourses] = useState([])
+    useEffect(()=>{
+        const fetchCourses = async()=>{
+            const res =  await axios.get("http://localhost:8000/api/course/random")
+            console.log(res);
+            console.log("success in fetch");
+            setCourses(res.data)
+        }
+        fetchCourses()
+    },[])
+
+
     return (
         <>
 

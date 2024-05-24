@@ -6,6 +6,7 @@ export const addLecture = async (req, res, next) => {
     const newLec = new Lecture({...req.body, owner: req.user.id});
     try{
         const savedLec = await newLec.save();
+        const course = 
         res.status(200).json(savedLec);
     }catch(err){
         next(err);

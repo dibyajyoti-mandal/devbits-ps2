@@ -7,10 +7,12 @@ import authRoutes from "./routes/auth.routes.js"
 import courseRoutes from './routes/course.routes.js'
 import commentRoutes from "./routes/comments.routes.js"
 import lectureRoutes from "./routes/lecture.routes.js"
+import cors from "cors"
 
 const app=express()
 dotenv.config()
 app.use(express.json())
+app.use(cors())
 const port = process.env.PORT||3000;
 await connectDB()
 app.use("/api/user", userRoutes);
