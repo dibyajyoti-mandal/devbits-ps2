@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Lecture from './Lecture.jsx'
+// import { Link } from 'react-router-dom'
 import LectureCard from '../components/LectureCard.jsx'
 import styled from 'styled-components'
 import '../index.css'

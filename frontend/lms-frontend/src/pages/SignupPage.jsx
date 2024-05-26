@@ -10,7 +10,6 @@ const SignupPage = () => {
     // Handle sign-up logic here
     console.log('Name:', name);
     console.log('Email:', email);
-    console.log('Password:', password);
   };
 
   return (

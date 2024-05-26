@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
-
+import axios from "axios"
+import { useDispatch } from 'react-redux';
+import { loginFailure, loginStart, loginSuccess } from '../redux/userSlice';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch()
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
     console.log('Email:', email);
-    console.log('Password:', password);
   };
+
+  const handleLogin =async (e)=>{
+    e.preventDefault();
+    dispatch(loginStart())
+    try{
+      const res = await axios.post("http://localhost:8000/api/auth/login", {email, password});
+      console.log(res.data);
+      dispatch(loginSuccess(res.data))
+    }catch(err){
+      console.log(err)
+      dispatch(loginFailure())
+    }
+  }
 
   return (
     <div className="flex items-center justify-center h-screen bg-violet-500">
@@ -54,6 +69,7 @@ const LoginPage = () => {
             <button
               type="submit"
               className="bg-violet-600 text-white font-bold py-2 px-4 rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50"
+              onClick={handleLogin}
             >
               Login
             </button>

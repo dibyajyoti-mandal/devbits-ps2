@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Courses from './pages/Courses';
 import Course from './pages/Course';
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {Route, Link, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Lecture from './pages/Lecture';
 import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
@@ -23,27 +23,28 @@ function App() {
       <React.Fragment>
         <div className="App bg-white">
           <Navbar />
-          <Container className='mt-[70px]'>
-            {/* routing */}
-            <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/courses">
-                <Route index element={<Courses/>} />
-                <Route path="course">
-                  <Route path=":id" element={<Course/>}/>
+          
+            <Container className='mt-[70px]'>
+              {/* routing */}
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/courses">
+                  <Route index element={<Courses />} />
+                  <Route path="course">
+                    <Route path=":id" element={<Course />} />
+                  </Route>
                 </Route>
-              </Route>
-              <Route path="/course" element={<Course/>}/>
-              <Route path="/lecture" element={<Lecture/>}/>
-              <Route path="/login" element={<LoginPage/>}/>
-              <Route path="/signup" element={<SignupPage/>}/>
-              <Route path="/create" element={<CreateCourse/>}/>
+                <Route path="/course" element={<Course />} />
+                <Route path="/lecture" element={<Lecture />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/create" element={<CreateCourse />} />
 
-            </Routes>
-          {/* routing end */}
-          </Container>
+              </Routes>
+              {/* routing end */}
+            </Container>
         </div>
-        </React.Fragment>
+      </React.Fragment>
 
     </>
   );

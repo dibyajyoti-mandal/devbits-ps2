@@ -12,16 +12,15 @@ const Wrapper = styled.div`
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
-    useEffect(()=>{
-        const fetchCourses = async()=>{
-            const res =  await axios.get("http://localhost:8000/api/course/random")
-            console.log(res);
-            console.log("success in fetch");
+    useEffect(() => {
+        const fetchCourses = async () => {
+            const res = await axios.get("http://localhost:8000/api/course/random")
+            // console.log(res);
+            // console.log("success in fetch");
             setCourses(res.data)
         }
         fetchCourses()
-    },[])
-
+    }, [])
 
     return (
         <>
@@ -31,24 +30,15 @@ const Courses = () => {
                 <div className='flex p-4 justify-between'>
                     <div className='headings mt-1'>Get your Courses here...</div>
                     <Link to="/create">
-                    <button class="btn-primary mt-1">
-                        Create Course
-                    </button>
+                        <button class="btn-primary mt-1">
+                            Create Course
+                        </button>
                     </Link>
                 </div>
                 <Wrapper>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-
-
+                    {courses.map(course => (
+                        <Card key={course._id} course={course} />
+                    ))}
 
                 </Wrapper>
 

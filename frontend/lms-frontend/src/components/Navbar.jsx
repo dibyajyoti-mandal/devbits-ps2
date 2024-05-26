@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { IoPerson } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
+import {useSelector} from "react-redux"
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +10,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const {currentUser} = useSelector((state)=>state.user)
   return (
     <nav className="bg-gray-900 p-4 fixed top-0 w-full">
       <div className="container mx-auto flex justify-between items-center">
@@ -41,19 +43,27 @@ const Navbar = () => {
             <button><FaSearch className='m-2 mr-4 nav-buttons'/></button>
             
           </div>
-          <a href="/" className="nav-buttons">
+          <Link to="/" className="nav-buttons">
             Home
-          </a>
-          <a href="courses" className="nav-buttons">
+          </Link>
+          <Link to="courses" className="nav-buttons">
             Courses
-          </a>
-          <a href="create" className="nav-buttons">
+          </Link>
+          <Link to="create" className="nav-buttons">
             Publish
-          </a>
+          </Link>
+          {
+            currentUser?(
+              <Link to="login" className="nav-buttons flex border-double border p-2 rounded-lg hover:border-violet-500 mr-4">
+            <span>Logout</span> <IoPerson className='mt-1 ml-2'/>
+          </Link>
+            ):(
+              <Link to="login" className="nav-buttons flex border-double border p-2 rounded-lg hover:border-violet-500 mr-4">
+            <span>Login</span> <IoPerson className='mt-1 ml-2'/>
+          </Link>
+            )
+          }
           
-          <a href="profile" className="nav-buttons flex border-double border p-2 rounded-lg hover:border-violet-500 mr-4">
-            <span>My Profile</span> <IoPerson className='mt-1 ml-2'/>
-          </a>
         </div>
       </div>
     </nav>
