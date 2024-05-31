@@ -29,10 +29,11 @@ export const loginUser = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, "process");
     const { password, ...others } = user._doc;
 
-    res
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      withCredentials:true,
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    })
       .status(200)
       .json(others);
   } catch (err) {

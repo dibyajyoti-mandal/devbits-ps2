@@ -8,11 +8,17 @@ import courseRoutes from './routes/course.routes.js'
 import commentRoutes from "./routes/comments.routes.js"
 import lectureRoutes from "./routes/lecture.routes.js"
 import cors from "cors"
+import cookieParser from "cookie-parser"
 
 const app=express()
 dotenv.config()
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}))
 app.use(express.json())
-app.use(cors())
+app.use(cookieParser())
+
 const port = process.env.PORT||3000;
 await connectDB()
 app.use("/api/user", userRoutes);

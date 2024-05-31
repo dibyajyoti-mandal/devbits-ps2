@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, current } from "@reduxjs/toolkit"
 
 
 const initialState = {
-    currentUser: null,
+    currentCourse: null,
     loading: false,
     error: false,
 };
@@ -12,22 +12,17 @@ export const courseSlice = createSlice({
     name: 'course',
     initialState,
     reducers: {
-        loginStart: (state) => {
+        fetchStart: (state) => {
             state.loading = true;
         },
-        loginSuccess: (state, action) => {
+        fetchSuccess: (state, action) => {
             state.loading = false;
-            state.currentUser = action.payload;
+            state.currentCourse = action.payload;
         },
-        loginFailure: (state) => {
+        fetchFailure: (state) => {
             state.loading = false;
             state.error = true;
-        },
-        logout: (state) => {
-            state.currentUser = null;
-            state.loading = false;
-            state.error = false;
-        },
+        }
     },
 })
 
