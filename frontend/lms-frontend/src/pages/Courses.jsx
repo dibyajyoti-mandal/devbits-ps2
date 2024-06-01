@@ -20,7 +20,6 @@ const Courses = () => {
         fetchCourses()
     }, [])
 
-    console.log(courses)
 
     return (
         <>

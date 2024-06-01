@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const LectureCard = ({lecture}) => {
   return (
     <>
-      <Link to='/lecture'>
+      <Link to={`/lecture/${lecture._id}`}>
         <div className="flex bg-gray-300 rounded-lg my-2 hover:text-violet-700">
           <div className='px-6  py-[20px] md:py-[40px]'>
             <FaCirclePlay />

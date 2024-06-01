@@ -24,6 +24,15 @@ export const getLectures = async (req,res,next)=>{
 }
 
 
+export const getLectureById = async (req, res, next) => {
+    try {
+        const course = await Lecture.findById(req.params.id);
+        res.status(200).json(course);
+    } catch (err) {
+        next(err);
+    }
+};
+
 
 // export const deleteLecture = async(req,res,next)=>{
 //     try{
