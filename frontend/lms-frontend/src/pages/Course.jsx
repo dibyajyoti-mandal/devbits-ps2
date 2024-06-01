@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import LectureCard from '../components/LectureCard.jsx'
 import styled from 'styled-components'
 import '../index.css'
-
+import {useDispatch, useSelector} from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
+import { fetchSuccess, fetchStart } from '../redux/courseSlice.js'
 
 
 const Image = styled.img`
@@ -12,19 +15,59 @@ const Image = styled.img`
 `
 
 const Course = () => {
+
+  const dispatch = useDispatch()
+  const {currentUser} = useSelector((state)=>state.user);
+  const {currentCourse} = useSelector((state)=>state.course)
+  // console.log(currentUser)
+  let path = useLocation().pathname.split("/")[2]
+  const [course, setCourse] = useState({});
+
+  useEffect(()=>{
+    const data = async ()=>{
+
+        const courseRes = await axios.get(`http://localhost:8000/api/course/find/${path}`)
+        setCourse(courseRes.data)
+        dispatch(fetchSuccess(courseRes.data));
+      
+    }
+    data()
+  },[path, dispatch])
+
+  const [courseowner, setCourseowner] = useState({})
+    useEffect(() => {
+        const fetchOwner = async () => {
+            const res = await axios.get(`http://localhost:8000/api/user/find/${currentCourse.owner}`)
+            setCourseowner(res.data)
+        }
+        fetchOwner()
+    }, [])
+    // console.log("owner :",courseowner)
+
+    const [lectures, setLectures] = useState([])
+    useEffect(() => {
+      const fetchLec = async () => {
+          const resLec = await axios.get(`http://localhost:8000/api/lecture/${path}`)
+          setLectures(resLec.data)
+      }
+      fetchLec()
+  }, [])
+
+  // console.log(lectures)
+
   return (
     <>
       <div className='mx-10 mt-[80px]'>
         <div className="head-section md:flex pt-6">
-          <Image src='https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/5DqpWgLsxYY7qiDByGV5RY/06a51ac46937084bca466f746bddfaee/project-management-cover.jpg?auto=format%2Ccompress&dpr=1' className='rounded-md flex:1 mr-4 w-[300px] md:w-[400px] lg:w-[500px] 
+          <Image src={`${currentCourse.thumbnail}`} className='rounded-md flex:1 mr-4 w-[300px] md:w-[400px] lg:w-[500px] 
           md:h-[250px] ' />
-          <div className='text-violet-600 md:text-2xl h-[200px]'> <span className='font-bold'> Supervised Machine Learning with Andrew</span>
+          <div className='text-violet-600 md:text-2xl h-[200px]'> <span className='font-bold'> {`${currentCourse.title}`}</span>
             <div className="desc text-[15px] text-black">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, consectetur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum saepe maiores tenetur recusandae reiciendis commodi enim illum tempora molestiae nobis?
+            {`${currentCourse.description}`}
             </div>
             <div className="bottom-section flex justify-between">
-              <div className="text-gray-400 text-xl">Andrew Ng</div>
-              <div className="text-gray-400 text-xl">12 May 2023</div>
+              <div className="text-gray-400 text-xl">{`${courseowner.name}`}</div>
+              {/* <div className="text-gray-400 text-xl">12 May 2023</div> */}
             </div>
             <button class="btn-primary mt-4 text-[15px] p-2 px-8">
               Enroll
@@ -33,13 +76,9 @@ const Course = () => {
         </div>
         <div className="lecture-section mt-[60px]">
           <h1 className='text-2xl text-violet-800 font-semibold'>Lectures</h1>
-          <LectureCard />
-          <LectureCard />
-          <LectureCard />
-          <LectureCard />
-          <LectureCard />
-          <LectureCard />
-          <LectureCard />
+          {lectures.map(lec=>
+            <LectureCard lecture={lec}/>
+          )}
         </div>
 
       </div>

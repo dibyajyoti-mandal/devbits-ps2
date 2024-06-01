@@ -24,7 +24,7 @@ const Card = ({course}) => {
   }, [course.owner])
   return (
     <>
-    <Link to="/course" >
+    <Link to={`/course/${course._id}`} >
       <div className='w-[250px] mb-[30px] cursor-pointer bg-gray-200 p-1 rounded-xl shadow-lg hover:shadow-purple-300 mx-2'>
         <Image src={course.thumbnail} className='rounded-md' />
         <div className='px-2'>

@@ -1,6 +1,5 @@
 import express from "express"
 import dotenv from "dotenv"
-import mongoose from "mongoose"
 import connectDB from "./util/dbconnection.js"
 import userRoutes from "./routes/user.routes.js"
 import authRoutes from "./routes/auth.routes.js"

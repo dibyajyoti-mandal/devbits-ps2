@@ -3,6 +3,7 @@ import axios from "axios"
 import { useDispatch } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../redux/userSlice';
 import { useNavigate } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -84,12 +85,12 @@ const LoginPage = () => {
             >
               Login
             </button>
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-violet-600 hover:text-violet-700 font-medium"
             >
               New User?
-            </a>
+            </Link>
           </div>
         </form>
       </div>

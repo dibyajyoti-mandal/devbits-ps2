@@ -15,12 +15,12 @@ const Courses = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             const res = await axios.get("http://localhost:8000/api/course/random")
-            // console.log(res);
-            // console.log("success in fetch");
             setCourses(res.data)
         }
         fetchCourses()
     }, [])
+
+    console.log(courses)
 
     return (
         <>

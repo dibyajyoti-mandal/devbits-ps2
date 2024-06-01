@@ -27,6 +27,6 @@ export const courseSlice = createSlice({
 })
 
 
-export const { loginStart, loginSuccess, loginFailure, logout } = courseSlice.actions;
+export const { fetchStart, fetchSuccess, fetchFailure } = courseSlice.actions;
 
 export default courseSlice.reducer;

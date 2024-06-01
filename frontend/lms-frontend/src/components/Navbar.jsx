@@ -3,13 +3,21 @@ import { IoPerson } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/userSlice';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const dispatch = useDispatch()
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = async(e) =>{
+    e.preventDefault();
+    console.log("logout")
+    dispatch(logout())
+  }
   const {currentUser} = useSelector((state)=>state.user)
   return (
     <nav className="bg-gray-900 p-4 fixed top-0 w-full">
@@ -54,7 +62,7 @@ const Navbar = () => {
           </Link>
           {
             currentUser?(
-              <Link to="login" className="nav-buttons flex border-double border p-2 rounded-lg hover:border-violet-500 mr-4">
+              <Link to="login" className="nav-buttons flex border-double border p-2 rounded-lg hover:border-violet-500 mr-4" onClick={handleLogout}>
             <span>Logout</span> <IoPerson className='mt-1 ml-2'/>
           </Link>
             ):(

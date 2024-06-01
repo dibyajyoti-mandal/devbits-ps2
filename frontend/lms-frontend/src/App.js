@@ -30,11 +30,12 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/courses">
                   <Route index element={<Courses />} />
-                  <Route path="course">
+                  
+                </Route>
+                <Route path="course">
                     <Route path=":id" element={<Course />} />
                   </Route>
-                </Route>
-                <Route path="/course" element={<Course />} />
+                {/* <Route path="course" element={<Course />} /> */}
                 <Route path="/lecture" element={<Lecture />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
