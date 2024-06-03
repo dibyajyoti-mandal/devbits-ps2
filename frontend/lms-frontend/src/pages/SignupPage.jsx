@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const SignupPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle sign-up logic here
     console.log('Name:', name);
     console.log('Email:', email);
   };
+
+  const handleSignup = async(e)=>{
+    e.preventDefault();
+    try{
+      const res = await axios.post('http://localhost:8000/api/auth/signup', {
+        name,
+        email,
+        password
+      })
+      console.log(res)
+      navigate("/login")
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <div className="flex items-center justify-center h-screen bg-violet-600">
@@ -71,6 +89,7 @@ const SignupPage = () => {
             <button
               type="submit"
               className="bg-violet-600 text-white font-bold py-2 px-4 rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50"
+              onClick={handleSignup}
             >
               Sign Up
             </button>

@@ -5,6 +5,7 @@ import {useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,17 +13,20 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const nav = useNavigate()
   const handleLogout = async(e) =>{
     e.preventDefault();
     console.log("logout")
     dispatch(logout())
+    nav("/login")
   }
   const {currentUser} = useSelector((state)=>state.user)
   return (
     <nav className="bg-gray-900 p-4 fixed top-0 w-full">
       <div className="container mx-auto flex justify-between items-center">
+        <Link to="/">
         <div className="font-bold  text-violet-500"><span className='text-3xl'>LearnIt</span><span className='text-1xl text-white'>.com</span></div>
+        </Link>
         <div className="block lg:hidden">
           <button
             onClick={toggleMenu}

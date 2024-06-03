@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../util/errors.js";
@@ -35,7 +34,7 @@ export const loginUser = async (req, res, next) => {
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
       .status(200)
-      .json(others);
+      .json({token, others});
   } catch (err) {
     next(err);
   }

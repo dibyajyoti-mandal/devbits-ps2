@@ -40,7 +40,7 @@ export const enroll = async(req,res,next)=>{
 
     try{
         await User.findByIdAndUpdate(req.user.id,{
-            $push:{courses: req.params.id},
+            $push:{enrolled: req.params.id},
         });
         res.status(200).json("Enrolled to course")
     }catch(err){
@@ -52,7 +52,7 @@ export const unEnroll = async(req,res,next)=>{
     try{
         try{
             await User.findByIdAndUpdate(req.user.id,{
-                $pull:{courses: req.params.id},
+                $pull:{enrolled: req.params.id},
             });
             res.status(200).json("Un-enrolled")
         }catch(err){

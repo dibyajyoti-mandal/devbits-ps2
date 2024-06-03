@@ -25,9 +25,11 @@ const Home = () => {
                             Explore Courses
                         </button>
                     </a>
-                    <button class="btn-primary">
-                        Create Course
-                    </button>
+                    <a href="/create">
+                        <button class="btn-primary">
+                            Create Course
+                        </button>
+                    </a>
                 </div>
 
             </div>

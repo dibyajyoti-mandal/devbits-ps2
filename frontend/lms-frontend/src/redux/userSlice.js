@@ -27,10 +27,22 @@ export const userSlice = createSlice({
             state.loading = false;
             state.error = false;
         },
+        enroll:(state, action)=>{
+            if(state.currentUser.others.enrolled.includes(action.payload)){
+                state.currentUser.others.enrolled.splice(state.currentUser.others.enrolled.findIndex(
+                    (courseId)=>courseId===action.payload
+                ),
+                1
+            );
+            }
+            else{
+                state.currentUser.others.enrolled.push(action.payload)
+            }
+        }
     },
 })
 
 
-export const { loginStart, loginSuccess, loginFailure, logout } = userSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, logout, enroll } = userSlice.actions;
 
 export default userSlice.reducer;

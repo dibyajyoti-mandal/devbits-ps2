@@ -33,6 +33,9 @@ const userSchema = new Schema({
             ref : Course,
         }
     ],
+    enrolled:{
+        type: [String]
+    }
 }, {
     timestamps: true
 });

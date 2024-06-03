@@ -11,11 +11,6 @@ const LoginPage = () => {
   const dispatch = useDispatch()
   const naviagte = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Email:', email);
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(loginStart())
@@ -29,6 +24,7 @@ const LoginPage = () => {
         },
         withCredentials: true // Important to include cookies in requests
       })
+      localStorage.setItem("userinfo", JSON.stringify(res));
       console.log(res.data);
       dispatch(loginSuccess(res.data))
       naviagte("/")
@@ -44,7 +40,7 @@ const LoginPage = () => {
         <h1 className="text-3xl font-bold text-center mb-8 text-black">
           Login
         </h1>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-4">
             <label
               htmlFor="email"
