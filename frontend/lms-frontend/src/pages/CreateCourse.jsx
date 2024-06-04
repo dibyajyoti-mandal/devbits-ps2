@@ -15,7 +15,6 @@ const CreateCourse = () => {
   const [image, setImage] = useState(null);
   const [inputs, setInputs] = useState({});
   const [imgPercentage, setImgPercentage] = useState(0);
-  const [nullperc, setNullPerc] = useState(0);
   const [category, setCategory] = useState('');
   const navigate = useNavigate();
 

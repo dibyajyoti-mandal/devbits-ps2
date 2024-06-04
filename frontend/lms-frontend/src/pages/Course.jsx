@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { fetchSuccess, fetchStart } from '../redux/courseSlice.js'
 import { enroll } from '../redux/userSlice.js'
+import { useNavigate } from 'react-router-dom'
 
 const Image = styled.img`
     background-color: #f3f4ff;
@@ -32,7 +33,7 @@ const Course = () => {
   }, [path, dispatch])
   const { currentUser } = useSelector((state) => state.user);
   const { currentCourse } = useSelector((state) => state.course)
-  
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchOwner = async () => {
@@ -73,42 +74,54 @@ const Course = () => {
       await axios.put(`http://localhost:8000/api/user/enroll/${path}`, {},
         config
       )
-      dispatch(enroll(currentCourse._id))
-}
+    dispatch(enroll(currentCourse._id))
+  }
+
+  const handleAdd = () =>{
+    currentUser.others.name === courseowner.name ? navigate(`/newlec/${path}`):
+    console.log("cant edit course")
+  }
 
 
 
-return (
-  <>
-    <div className='mx-10 mt-[80px]'>
-      <div className="head-section md:flex pt-6">
-        <Image src={`${currentCourse.thumbnail}`} className='rounded-md flex:1 mr-4 w-[300px] md:w-[400px] lg:w-[500px] 
+  return (
+    <>
+      <div className='mx-10 mt-[80px]'>
+        <div className="head-section md:flex pt-6">
+          <Image src={`${currentCourse.thumbnail}`} className='rounded-md flex:1 mr-4 w-[300px] md:w-[400px] lg:w-[500px] 
           md:h-[250px] ' />
-        <div className='text-violet-600 md:text-2xl h-[200px]'> <span className='font-bold'> {`${currentCourse.title}`}</span>
-          <div className="desc text-[15px] text-black">
-            {`${currentCourse.description}`}
+          <div className='text-violet-600 md:text-2xl h-[200px]'> <span className='font-bold'> {`${currentCourse.title}`}</span>
+            <div className="desc text-[15px] text-black">
+              {`${currentCourse.description}`}
+            </div>
+            <div className="bottom-section flex justify-between ">
+              <div className="text-gray-400 text-xl md:mr-[50px]">{`${courseowner.name}`}</div>
+              <div className="text-gray-400 text-xl">{`${currentCourse.createdAt}`.slice(0, 10)}</div>
+            </div>
+            <div className="flex">
+              <button class="btn-primary mt-4 text-[15px] p-2 px-8 mr-4 md:mr-[50px]" onClick={handleEnroll}>
+                {currentUser.others.enrolled?.includes(`${path}`) ? "Enrolled" : "Enroll here"}
+              </button>
+              { 
+                currentUser.others.name === courseowner.name ? <button class="btn-primary mt-4 text-[15px] p-2 px-8" onClick={handleAdd}>
+                  Add Lecture
+                </button> : <span></span>
+              }
+            </div>
           </div>
-          <div className="bottom-section flex justify-between">
-            <div className="text-gray-400 text-xl">{`${courseowner.name}`}</div>
-            <div className="text-gray-400 text-xl">{`${currentCourse.createdAt}`.slice(0,10)}</div>
-          </div>
-          <button class="btn-primary mt-4 text-[15px] p-2 px-8" onClick={handleEnroll}>
-            {currentUser.others.enrolled?.includes(`${path}`) ? "Enrolled" : "Enroll here"}
-          </button>
         </div>
+        <div className="lecture-section mt-[60px]">
+          <h1 className='text-2xl text-violet-800 font-semibold'>Lectures</h1>
+          {lectures.map(lec =>
+            <LectureCard lecture={lec} />
+          )}
+        </div>
+
       </div>
-      <div className="lecture-section mt-[60px]">
-        <h1 className='text-2xl text-violet-800 font-semibold'>Lectures</h1>
-        {lectures.map(lec =>
-          <LectureCard lecture={lec} />
-        )}
-      </div>
 
-    </div>
+    </>
 
-  </>
-
-)
+  )
 }
 
 export default Course
